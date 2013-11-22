@@ -1,0 +1,23 @@
+
+<polymer-element name="parameters-editor">
+  <template>
+    <!--TODO add header -->
+    <header>Parameters</header>
+    <div>
+      <!--create accordion per fieldset based on fieldsets-->
+      <template if="{{params.fieldSets}}">
+        <polymer-ui-accordion selected="0">
+          <template repeat="{{fieldset in params.fieldSets}}" >
+            <polymer-ui-collapsible>
+              <div class="polymer-ui-collapsible-header">{{fieldset.legend}}</div>
+              <div class="content">
+                blabla
+              </div>
+            </polymer-ui-collapsible>
+          </template>
+      </template>
+    <div>
+  </template>
+  <script src="parameters-editor.js"></script>
+</polymer-element>
+

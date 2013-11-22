@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Parameters editor</title>
+    <script src="polymer.min.js"></script>
+    <link rel="import" href="parameters-editor.html">
+  </head>
+  <body>
+    <parameters-editor> </parameters-editor>
+    <script>
+      document.addEventListener('WebComponentsReady', function() {
+        var paramsEditor = document.querySelector('parameters-editor');
+
+        var parameters={
+          fieldsets:[
+            {
+              "legend": "Main Cube",
+              "fields": ["width","height","depth","roundings","wheels","boxColor"]
+            },
+            {
+              "legend":"Substracted Cube",
+              "fields": ["boxColor2","vary","xpos","ypos","zpos"]
+            }
+          ]
+        }
+        paramsEditor.params = parameters;
+    </script>
+  </body>
+</html>
