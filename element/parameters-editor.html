@@ -1,6 +1,5 @@
 <link rel="import" href="../bower_components/polymer-ui-collapsible/polymer-ui-collapsible.html">
 <link rel="import" href="../bower_components/polymer-ui-field/polymer-ui-field.html">
-
 <link rel="import" href="../bower_components/polymer-ui-icon/polymer-ui-icon.html" />
 
 <polymer-element name="parameters-editor">
@@ -26,18 +25,22 @@
                   <polymer-ui-field>
                   {{param.name}}
                   <label for="{{param.name}}">{{param.name}}</label>
+
                   <template if="{{param.data.type === 'number'}}" >
                     <input id="{{param.name}}" type="number" value="{{param.data.default}}"} />
                   </template> 
+
                   <template if="{{param.data.type === 'slider'}}" >
                     <!--TODO: replace with custom element -->
                     <span>{{param.data.min}}</span>
                     <input type="range" value="{{param.data.default}}" min="{{param.data.min}}" max="{{param.data.max}}" step="{{param.data.step}}" />
                     <span>{{param.data.max}}</span>
                   </template> 
+
                   <template if="{{param.data.type === 'checkbox'}}" >
                     <input type="checkbox" checked="{{param.default}}"/>
                   </template>
+
                   <template if="{{param.data.type === 'select'}}" >
                     <select>
                       <template repeat="{{value in param.data.values}}">
@@ -45,12 +48,17 @@
                       </template>
                     </select>
                   </template>
+
                   <template if="{{param.data.type === 'color'}}">
                     <!--TODO: replace with custom element -->
                     <span style="height:75%">
                     <input type="text" value="{{param.data.default}}" style="margin-right:0px;float:left;height:inherit"> 
                     <input type="color" value="{{param.data.default}}" style="width:25px;background: lightgrey;margin-left: 0px;float:left;height:inherit"/>
                     </span>
+                  </template>
+
+                  <template if="{{param.data.type === 'text'}}">
+                    <input type="text" value="{{param.data.default}}" style="text-align:center" />
                   </template>
                     
                   <span class="captionEl" title="{{param.data.caption}}" >?</span>

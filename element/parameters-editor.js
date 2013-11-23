@@ -28,7 +28,6 @@ Polymer("parameters-editor", {
   //change handlers
   paramsChanged__:function(oldValue)
   {
-      
       var fieldsData = {};
       for(var i = 0; i<this.params.fieldsets.length;i++)
       {
@@ -40,5 +39,4 @@ Polymer("parameters-editor", {
       }
       this._fields = fieldsData;
   }
-
 });
