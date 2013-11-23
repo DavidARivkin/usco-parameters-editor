@@ -1,17 +1,19 @@
 <link rel="import" href="../bower_components/polymer-ui-collapsible/polymer-ui-collapsible.html">
+<link rel="import" href="../bower_components/polymer-ui-field/polymer-ui-field.html">
+
+<link rel="import" href="../bower_components/polymer-ui-icon/polymer-ui-icon.html" />
 
 <polymer-element name="parameters-editor">
   <template>
     <!--TODO add header -->
     <div>Parameters</div>
-
     <div>
-      <!--no fieldsets-->
+      <!--no fieldsets
       <template if="!{{params.fieldsets}}">
         <template repeat="{{fiel in params.fields}}"}>
 
         </template>
-      </template>
+      </template>-->
       <!--create accordion per fieldset based on fieldsets-->
       <template if="{{params.fieldsets}}">
         <polymer-ui-accordion selected="0">
@@ -19,40 +21,40 @@
             <polymer-ui-collapsible>
               <div class="polymer-ui-collapsible-header">{{fieldset.legend}}</div>
               <div class="content">
-                <template repeat="{{field in fieldset.fields}}">
-                  {{field}}
-                  <br>
-                </template>
-
-                <template repeat="{{param in params.fields}}">
-
+                <template repeat="{{ param in params.fields | entries }}">
+                  
+                  <polymer-ui-field>
                   {{param.name}}
-                  {{param.type}}
-                  {{param.caption}}
-                  <!--<template if="{{ fieldset.fields.indexOf(param.name) != -1 }}">
-                      BLABLA
-                  </template>-->
-
-                  <template if="{{param.type === 'number'}}" >
-                    <input type="number" value="{{param.value}}" bind="{{param.value}}"} />
+                  <label for="{{param.name}}">{{param.name}}</label>
+                  <template if="{{param.data.type === 'number'}}" >
+                    <input id="{{param.name}}" type="number" value="{{param.data.default}}"} />
                   </template> 
-                  <template if="{{param.type === 'slider'}}" >
-                    <input type="range" value="{{param.default}}" />
+                  <template if="{{param.data.type === 'slider'}}" >
+                    <!--TODO: replace with custom element -->
+                    <span>{{param.data.min}}</span>
+                    <input type="range" value="{{param.data.default}}" min="{{param.data.min}}" max="{{param.data.max}}" step="{{param.data.step}}" />
+                    <span>{{param.data.max}}</span>
                   </template> 
-                  <template if="{{param.type === 'checkbox'}}" >
+                  <template if="{{param.data.type === 'checkbox'}}" >
                     <input type="checkbox" checked="{{param.default}}"/>
                   </template>
-                  <template if="{{param.type === 'select'}}" >
+                  <template if="{{param.data.type === 'select'}}" >
                     <select>
-                      <template repeat="{{value in param.values}}">
+                      <template repeat="{{value in param.data.values}}">
                         <option value="{{value}}"> {{value}} </option>
                       </template>
                     </select>
                   </template>
-                  <template if="{{param.type === 'color'}}">
-                    <input type="color" />
+                  <template if="{{param.data.type === 'color'}}">
+                    <!--TODO: replace with custom element -->
+                    <span style="height:75%">
+                    <input type="text" value="{{param.data.default}}" style="margin-right:0px;float:left;height:inherit"> 
+                    <input type="color" value="{{param.data.default}}" style="width:25px;background: lightgrey;margin-left: 0px;float:left;height:inherit"/>
+                    </span>
                   </template>
-                  <br/>                  
+                    
+                  <span class="captionEl" title="{{param.data.caption}}" >?</span>
+                  </polymer-ui-field>
                   
                 </template>
               </div>

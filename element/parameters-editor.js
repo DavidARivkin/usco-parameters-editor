@@ -1,38 +1,44 @@
 Polymer("parameters-editor", {
   params: null,
   _fields : null,
-  observe: {
-    'params["fields"][0].value': 'subPathChanged',
-    'params': 'subPathChanged'
-  },
-
+  optionsHash : null,
   created:function()
   {
-    
+    function entries(object) {
+    return {
+      toDOM: function(value) {
+        console.log("object",object, "value",value);
+        var bla = [];
+        for (prop in value)
+        {
+          bla.push({name:prop, data:value[prop] } )
+        }
+        console.log("bla",bla);
+        return bla;
+      }
+      };
+    }
+    PolymerExpressions.filters.entries = entries;
   },
-  __test:function()
+  //api
+  generateOptionsHash:function()
   {
-    //{{ (fieldset.fields.indexOf(param.name) != -1)
+  
   },
-  subPathChanged:function(bla, bli)
-  {
-    console.log("su path changed", bla, bli);
-  },
-  paramsChanged:function(oldValue)
-  {
-      console.log("params changed", this.params);
-  },
-  attributeChanged: function(attrName, oldVal, newVal) {
-    //var newVal = this.getAttribute(attrName);
-    console.log(attrName, 'old: ' + oldVal, 'new:', newVal);
-  },
+  //change handlers
   paramsChanged__:function(oldValue)
   {
-      this._fields = {};
+      
+      var fieldsData = {};
       for(var i = 0; i<this.params.fieldsets.length;i++)
       {
+        var fields = this.params.fields;
+        var fieldSet = this.params.fieldsets[i];
+        fieldSet.fieldValues = {};
         
+        fieldsData[fieldSet.name] = "";
       }
+      this._fields = fieldsData;
   }
 
 });

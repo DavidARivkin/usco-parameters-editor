@@ -21,6 +21,39 @@
       .content {
         padding: 10px;
       }
+
+      .captionEl{
+        position:relative;
+        width:10px;
+        height:20px;
+        padding:10px;        
+      }
+
+       polymer-ui-field {
+        border: 1px solid #ddd;
+        margin: 10px;
+        height: 40px;
+      }
+
+      polymer-ui-field input, select, textarea{
+          border: 1px solid;
+          background: transparent;
+          border-radius: 0px;
+          width:200px;
+          
+          -ms-box-sizing:content-box;
+          -moz-box-sizing:content-box;
+          box-sizing:content-box;
+          -webkit-box-sizing:content-box; 
+      }
+
+      label
+      {
+        width:150px;
+        text-align:center;
+      }
+
+
     </style>
   </head>
   <body>
@@ -30,33 +63,40 @@
         var paramsEditor = document.querySelector('parameters-editor');
 
         var parameters={
-          "fields":[{
-            name: 'width',
-            type: 'number',
-            default: 30,
-            caption: "Width of the cube:",
-            value: 0
-          }, 
-          {
-            name: 'roundings',
-            type: 'checkbox',
-            default: false,
-            caption : "Corner roundings are niice",
-          },
-          {
-            name: 'wheels',
-            type: 'select',
-            default: null,
-            values: ["space","boxy"],
-            caption : "Not really wheels though",
-          },
-          {
-            name: 'boxColor',
-            type: 'color',
-            default: '#FF0000',
-            caption : "Pretty"
+          "fields":{
+            width :{
+              type: 'number',
+              default: 30,
+              caption: "Width of the cube:",
+              value: 0
+            }, 
+            xpos:{
+              type:'slider',
+              default:15,
+              max:100,
+              min:0,
+              step:0.5,
+              caption: "xpos"
+            },
+            roundings:{
+              type: 'checkbox',
+              default: false,
+              caption : "Corner roundings are niice",
+            },
+            wheels:{
+              type: 'select',
+              default: null,
+              values: ["space","boxy"],
+              caption : "Not really wheels though",
+            },
+            boxColor:{
+              type: 'color',
+              default: '#FF0000',
+              caption : "Pretty"
+            }
+
           }
-          ],
+          ,
           "fieldsets":[
             {
               "legend": "Main Cube",
