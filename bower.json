@@ -3,11 +3,8 @@
   "private": true,
   "dependencies": {
     "polymer": "Polymer/polymer#master",
-    "polymer-collapsible": "Polymer/polymer-collapsible#master",
-    "polymer-grid-layout": "Polymer/polymer-grid-layout#master",
-    "polymer-ui-accordion": "Polymer/polymer-ui-accordion#master",
-    "polymer-ui-toolbar": "Polymer/polymer-ui-toolbar#master",
-    "polymer-ui-icon-button": "Polymer/polymer-ui-icon-button#master"
+    "polymer-ui-collapsible": "Polymer/polymer-ui-collapsible#master",
+    "polymer-ui-accordion": "Polymer/polymer-ui-accordion#master"
   }
 }
 

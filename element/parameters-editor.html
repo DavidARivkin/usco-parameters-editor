@@ -1,17 +1,60 @@
+<link rel="import" href="../bower_components/polymer-ui-collapsible/polymer-ui-collapsible.html">
 
 <polymer-element name="parameters-editor">
   <template>
     <!--TODO add header -->
-    <header>Parameters</header>
+    <div>Parameters</div>
+
     <div>
+      <!--no fieldsets-->
+      <template if="!{{params.fieldsets}}">
+        <template repeat="{{fiel in params.fields}}"}>
+
+        </template>
+      </template>
       <!--create accordion per fieldset based on fieldsets-->
-      <template if="{{params.fieldSets}}">
+      <template if="{{params.fieldsets}}">
         <polymer-ui-accordion selected="0">
-          <template repeat="{{fieldset in params.fieldSets}}" >
+          <template repeat="{{fieldset in params.fieldsets}}" >
             <polymer-ui-collapsible>
               <div class="polymer-ui-collapsible-header">{{fieldset.legend}}</div>
               <div class="content">
-                blabla
+                <template repeat="{{field in fieldset.fields}}">
+                  {{field}}
+                  <br>
+                </template>
+
+                <template repeat="{{param in params.fields}}">
+
+                  {{param.name}}
+                  {{param.type}}
+                  {{param.caption}}
+                  <!--<template if="{{ fieldset.fields.indexOf(param.name) != -1 }}">
+                      BLABLA
+                  </template>-->
+
+                  <template if="{{param.type === 'number'}}" >
+                    <input type="number" value="{{param.value}}" bind="{{param.value}}"} />
+                  </template> 
+                  <template if="{{param.type === 'slider'}}" >
+                    <input type="range" value="{{param.default}}" />
+                  </template> 
+                  <template if="{{param.type === 'checkbox'}}" >
+                    <input type="checkbox" checked="{{param.default}}"/>
+                  </template>
+                  <template if="{{param.type === 'select'}}" >
+                    <select>
+                      <template repeat="{{value in param.values}}">
+                        <option value="{{value}}"> {{value}} </option>
+                      </template>
+                    </select>
+                  </template>
+                  <template if="{{param.type === 'color'}}">
+                    <input type="color" />
+                  </template>
+                  <br/>                  
+                  
+                </template>
               </div>
             </polymer-ui-collapsible>
           </template>
