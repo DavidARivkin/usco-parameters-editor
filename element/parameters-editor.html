@@ -2,6 +2,8 @@
 <link rel="import" href="../bower_components/polymer-ui-field/polymer-ui-field.html">
 <link rel="import" href="../bower_components/polymer-ui-icon/polymer-ui-icon.html" />
 
+<link rel="import" href="color-picker.html" />
+
 <polymer-element name="parameters-editor">
   <template>
     <!--TODO add header -->
@@ -48,13 +50,9 @@
                       </template>
                     </select>
                   </template>
-
+                
                   <template if="{{param.data.type === 'color'}}">
-                    <!--TODO: replace with custom element -->
-                    <span style="height:75%">
-                    <input type="text" value="{{param.data.default}}" style="margin-right:0px;float:left;height:inherit"> 
-                    <input type="color" value="{{param.data.default}}" style="width:25px;background: lightgrey;margin-left: 0px;float:left;height:inherit"/>
-                    </span>
+                    <color-picker color="{{param.data.default}}" > </color-picker>
                   </template>
 
                   <template if="{{param.data.type === 'text'}}">

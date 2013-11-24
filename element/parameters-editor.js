@@ -2,6 +2,7 @@ Polymer("parameters-editor", {
   params: null,
   _fields : null,
   optionsHash : null,
+  colorTest:"#ffffff",
   created:function()
   {
     function entries(object) {
