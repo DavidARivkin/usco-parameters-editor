@@ -3,6 +3,7 @@
 <link rel="import" href="../components/polymer-ui-icon/polymer-ui-icon.html" />
 
 <link rel="import" href="color-picker.html" />
+<link rel="import" href="slider-control.html" />
 
 <polymer-element name="parameters-editor">
   <template>
@@ -33,10 +34,7 @@
                   </template> 
 
                   <template if="{{param.data.type === 'slider'}}" >
-                    <!--TODO: replace with custom element -->
-                    <span>{{param.data.min}}</span>
-                    <input type="range" value="{{param.data.default}}" min="{{param.data.min}}" max="{{param.data.max}}" step="{{param.data.step}}" />
-                    <span>{{param.data.max}}</span>
+                    <slider-control value="{{param.data.default}}" min="{{param.data.min}}" max="{{param.data.max}}" > </slider-control>
                   </template> 
 
                   <template if="{{param.data.type === 'checkbox'}}" >

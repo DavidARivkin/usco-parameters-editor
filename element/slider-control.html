@@ -1,0 +1,23 @@
+
+<polymer-element name="slider-control" extends="input">
+  <template>
+    <style> 
+     @host {
+        * {
+          }
+      }
+       span, input[type=range]{
+          display: inline-block;vertical-align:middle !important;
+      }
+
+      input[type=range]{
+        width:77%;
+      }
+         
+    </style>
+    <span>{{min}}</span>
+      <input type="range" value="{{value}}" min="{{min}}" max="{{max}}" step="{{step}}" style="" />
+    <span >{{max}}</span>
+  </template>
+  <script src="slider-control.js"/>
+</polymer-element>
