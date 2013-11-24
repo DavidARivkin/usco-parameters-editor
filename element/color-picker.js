@@ -1,12 +1,11 @@
 Polymer("color-picker", {
-  color: "#ffffff",
-  created:function()
+  color:"#ff0000",
+  colorChanged:function(oldC,newC)
   {
-  },
-  colorChanged:function(oldColor, newColor)
-  {
-    console.log("color changed",this.color,oldColor,newColor)
+    console.log("color changed", this.color, oldC, newC);
   }
   //api
   //change handlers
 });
+
+

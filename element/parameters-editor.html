@@ -1,6 +1,6 @@
-<link rel="import" href="../bower_components/polymer-ui-collapsible/polymer-ui-collapsible.html">
-<link rel="import" href="../bower_components/polymer-ui-field/polymer-ui-field.html">
-<link rel="import" href="../bower_components/polymer-ui-icon/polymer-ui-icon.html" />
+<link rel="import" href="../components/polymer-ui-collapsible/polymer-ui-collapsible.html">
+<link rel="import" href="../components/polymer-ui-field/polymer-ui-field.html">
+<link rel="import" href="../components/polymer-ui-icon/polymer-ui-icon.html" />
 
 <link rel="import" href="color-picker.html" />
 
@@ -17,9 +17,9 @@
       </template>-->
       <!--create accordion per fieldset based on fieldsets-->
       <template if="{{params.fieldsets}}">
-        <polymer-ui-accordion selected="0">
+        <polymer-ui-accordion selectedItem="1" multi>
           <template repeat="{{fieldset in params.fieldsets}}" >
-            <polymer-ui-collapsible>
+            <polymer-ui-collapsible active>
               <div class="polymer-ui-collapsible-header">{{fieldset.legend}}</div>
               <div class="content">
                 <template repeat="{{ param in params.fields | entries }}">

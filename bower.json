@@ -2,6 +2,7 @@
   "name": "usco-parameters-editor",
   "private": true,
   "dependencies": {
+    "platform": "Polymer/platform#master",
     "polymer": "Polymer/polymer#master",
     "polymer-ui-collapsible": "Polymer/polymer-ui-collapsible#master",
     "polymer-ui-accordion": "Polymer/polymer-ui-accordion#master",
